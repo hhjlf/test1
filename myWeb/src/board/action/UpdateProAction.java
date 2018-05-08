@@ -10,6 +10,7 @@ public class UpdateProAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		request.setCharacterEncoding("utf-8");
 		System.out.println("여기까지오나?");
 		int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println(num); 

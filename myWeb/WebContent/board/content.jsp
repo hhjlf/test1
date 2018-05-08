@@ -33,18 +33,17 @@
         	alert("처음클릭!");
             $.ajax({
                 url:"comment.do",
-                
-                // data:{}에서는 EL을 ""로 감싸야 한다. 이외에는 그냥 사용한다.
+                dataType:"text",
                 data:{
                     commentContent:$("#commentContent").val(),
                     num:"${article.num}"
                 },
-             /*    beforeSend:function() {
+                 beforeSend:function() {
                     console.log("시작 전...");
                 },
                 complete:function() {
                     console.log("완료 후...");
-                }, */
+                },
                 success:function(data) {            // 서버에 대한 정상응답이 오면 실행, callback
            
                     if(data.result == 1) {            // 쿼리 정상 완료, executeUpdate 결과
@@ -86,21 +85,15 @@
     function getComment(commPageNum, event) {
     	alert(commPageNum);
         $.ajax({
-            url:"commentread.dos",
-            async:false,
-            
+            url:"aa.dos",
+            dataType:"JSON",
             data:{
                 commPageNum:commPageNum,
                 num:"${article.num}"
             },
-            beforeSend:function() {
-                console.log("읽어오기 시작 전...");
-            },
-            complete:function() {
-                console.log("읽어오기 완료 후...");
-            },
             success:function(data) {
-                console.log("comment를 정상적으로 조회하였습니다.");
+                alert("씨ㅏ발");
+            	console.log("comment를 정상적으로 조회하였습니다.");
                 showHtml(data, commPageNum);
                 
                 let position = $("#showComment table tr:last").position();
@@ -121,7 +114,7 @@
 <table width="500" border="1" cellspacing="0" cellpadding="0" align="center">
 <tr height="30">
 <td align="center" width="125" >글번호</td>
-<td align="center" width="125" >${article.num}</td>
+<td align="center" width="125" >${number}</td>
 <td align="center" width="125" >조회수 </td>
 <td align="center" width="125" align="center">${article.readcount}</td>
 </tr>
@@ -142,7 +135,7 @@
 <tr height="30">
 <td colspan="4" align="right">
 <input type="button" value="글수정" onclick="document.location.href='/myWeb/board/updateForm.do?num=${article.num}&pageNum=${pageNum}'">&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="button" value="글삭제" onclick="document.location.href='/myWeb/board/deleteForm.do?num=${article.num}&pageNum=${pageNum}'">&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="글삭제" onclick="document.location.href='/myWeb/board/deleteForm.do?num=${article.num}&ref=${article.ref}&pageNum=${pageNum}'">&nbsp;&nbsp;&nbsp;&nbsp;
 
 <input type="button" value = "답글쓰기" onclick="document.location.href='/myWeb/board/writeForm.do?num=${article.num}&ref=${article.ref}&step=${article.step}&depth=${article.depth}'">&nbsp;&nbsp;&nbsp;&nbsp;
 <input type ="button" value="글목록"  onclick="document.location.href='/myWeb/board/list.do?pageNum=${pageNum}'">

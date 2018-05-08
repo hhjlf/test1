@@ -30,7 +30,8 @@ function deleteSave(){
 	</tr>
 	<tr height="30">
 	<td>비밀번호: <input type="password" name="pass" >
-	<input type="hidden" name="num" value="${num }"></td>
+	<input type="hidden" name="num" value="${num }">
+	<input type="hidden" name="ref" value="${ref }"></td>
 	</tr>
 	<tr height="30">
 	<td>

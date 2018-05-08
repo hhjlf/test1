@@ -12,6 +12,8 @@ import board.model.BoardVO;
 
 public class ListAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
+	request.setCharacterEncoding("utf-8");	
+	
 	
 	String pageNum = request.getParameter("pageNum");
 	if(pageNum==null){
@@ -20,7 +22,9 @@ public class ListAction implements CommandAction {
 	String find = null;
 	String find_box = null;		
 	find = request.getParameter("find");
-	find_box = request.getParameter("find_box"); 
+	find_box = request.getParameter("find_box");
+	System.out.println(find);
+System.out.println(find_box);
 	if(find==null){
 		find="no";
 	}

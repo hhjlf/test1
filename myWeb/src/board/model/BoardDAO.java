@@ -42,6 +42,7 @@ public class BoardDAO {
 		}
 		return conn;
 	}
+	
 
 	public int insertArticle(BoardVO article) {
 
@@ -56,7 +57,7 @@ public class BoardDAO {
 		int ref = article.getRef();
 		int step = article.getStep();
 		int depth = article.getDepth();
-		System.out.println(num + "+" + ref + "+" + step + "+" + depth + "넘어온넘버ref스텝deptㅗ");
+		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select max(num) from board");
@@ -126,6 +127,9 @@ public class BoardDAO {
 	}
 
 	public int getArticleCount(String find, String find_box) {
+		
+		System.out.println(find+"디에이어");
+		System.out.println(find_box+"디에이오");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -224,7 +228,7 @@ public class BoardDAO {
 					article.setDe(rs.getInt("de"));
 					// List객체에 데이터저장빈인 BoardDataBean객체를 저장
 					articleList.add(article);
-					System.out.println(articleList.size());
+					
 				} while (rs.next());
 			}
 		} catch (Exception ex) {
@@ -426,7 +430,7 @@ public class BoardDAO {
 		System.out.println(result);
 		return result;
 }
-	public int deleteArticle(int num,String pass) {
+	public int deleteArticle(int num,String pass,int ref) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -441,8 +445,9 @@ public class BoardDAO {
 			if(rs.next()) {
 				dbpass=rs.getString("pass");
 				if(dbpass.equals(pass)) {
-					pstmt=conn.prepareStatement("update board set de = 1 where num=?");
-					pstmt.setInt(1, num);
+					pstmt=conn.prepareStatement("update board set de = 1 where ref=?");
+					pstmt.setInt(1, ref);
+					System.out.println("ref="+ref);
 					pstmt.executeUpdate();
 					result =1;
 				}else {

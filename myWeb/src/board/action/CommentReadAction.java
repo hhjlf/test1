@@ -1,8 +1,11 @@
 package board.action;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,11 +14,12 @@ import org.json.JSONArray;
 import board.comment.CommentVo;
 import board.model.BoardDAO;
 
-public class CommentReadAction implements CommandAction {
+public class CommentReadAction extends HttpServlet {
 
-	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-			response.setCharacterEncoding("utf-8");       
+	
+	public ArrayList requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		System.out.println("ÇÏÀÌÇï·Î¿ì¾È³ç?");	
+		response.setCharacterEncoding("utf-8");       
 	        
 	        int commPageNum = Integer.parseInt(request.getParameter("commPageNum"));
 	        int articleNumber =Integer.parseInt(request.getParameter("num"));
@@ -43,8 +47,20 @@ public class CommentReadAction implements CommandAction {
 	        }*/
 	        
 	        
-	        return "/board/content.jsp?comments";
+	        return comments;
 	    }
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
 
 
 	

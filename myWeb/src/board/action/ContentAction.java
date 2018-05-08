@@ -11,10 +11,10 @@ public class ContentAction implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
-		
+		int number = Integer.parseInt(request.getParameter("number"));
 		BoardDAO dao = BoardDAO.getInstance();
 		BoardVO article = dao.getArticle(num);
-		
+		request.setAttribute("number", number+1);
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("article", article);

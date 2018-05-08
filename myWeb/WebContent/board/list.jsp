@@ -96,25 +96,35 @@ jQuery.fn.highlight = function(pat) {
 				</tr>
 				<c:forEach var="article" items="${articleList }">
 					<tr  height="30">
-						<td align="center" width="50"><c:out value="${number}" /> <c:set
-								var="number" value="${number-1 }" /></td>
-						<td width="250"><c:if test="${article.depth>0 }">
+						<td align="center" width="50">
+						<c:out value="${number}" />
+						 <c:set
+						var="number" value="${number-1 }" />
+						</td>
+						<td width="250">
+						<c:if test="${article.depth>0 }">
 								<img src="images/lebel.gif" width="${5*article.depth }"
 									height="16">
 								<img src="images/re.gif">
-							</c:if> <c:if test="${article.depth==0 }">
+							</c:if> 
+							<c:if test="${article.depth==0 }">
 								<img src="images/level.gif" width="${5*article.depth }"
 									height="16">
-							</c:if> <c:if test="${article.de eq 0 }">
+							</c:if>
+							 <c:if test="${article.de eq 0 }">
 								<a class="subject"
-									href="/myWeb/board/content.do?num=${article.num}&pageNum=${currentPage}">
+									href="/myWeb/board/content.do?num=${article.num}&number=${number }&pageNum=${currentPage}">
 									${article.subject}</a>
 								<c:if test="${article.readcount >= 20 }">
 									<img src="images/hot.gif" border="0" height="16">
 								</c:if>
-							</c:if> <c:if test="${article.de eq 1 }">
-			삭제된글입니다.
-			</c:if></td>
+							</c:if> 
+							<c:if
+							 
+							test="${article.de eq 1 }">삭제된글입니다.
+						
+							</c:if>			
+							</td>
 						<td align="center" width="100"><a class="writer"
 							href="mailto:${article.email }">${article.writer }</a></td>
 						<td align="center" width="150">${article.regdate }</td>
@@ -127,8 +137,11 @@ jQuery.fn.highlight = function(pat) {
 				</c:forEach>
 			</table>
 		</c:if>
+		
 		<c:if test="${startPage>pageBlock }">
-			<a href="/myWeb/board/list.do?pageNun=${startPage -pageBlock }">[이전]</a>
+		<c:if test="${find_box eq 'no'}">
+			<a href="/myWeb/board/list.do?pageNum=${startPage -pageBlock }">[이전]</a>
+			</c:if>
 		</c:if>
 
 		<c:if test="${find_box eq 'no' }">
@@ -138,21 +151,34 @@ jQuery.fn.highlight = function(pat) {
 		</c:if>
 
 		<c:if test="${find_box != 'no' }">
+			<c:if
+			 test="${startPage>pageBlock }">
+			<a href="/myWeb/board/list.do?pageNum=${startPage -pageBlock }&find=${find}&find_box=${find_box}">[이전]</a>
+		</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 				<a
 					href="/myWeb/board/list.do?pageNum=${i }&find=${find}&find_box=${find_box}">[${i }]</a>
 			</c:forEach>
+			
+		
+			<c:if
+			 test="${endPage<pageCount }">
+			<a href="/myWeb/board/list.do?pageNum=${startPage+pageBlock }&find=${find}&find_box=${find_box}">[다음]</a>
+		</c:if>
+			
 		</c:if>
 
 
 		<c:if test="${endPage<pageCount }">
+		<c:if test="${find_box eq 'no'}">
 			<a href="/myWeb/board/list.do?pageNum=${startPage+pageBlock }">[다음]</a>
+			</c:if>
 		</c:if>
 
 		<form method="post" name="find_frm" action="/myWeb/board/list.do"
 			onsubmit="return check()">
 			<select name="find" size="1">
-				<option value="writer">이름</option>
+				<option value="writer">작성자</option>
 				<option value="subject">제목</option>
 				<option value="content">내용</option>
 			</select> &nbsp; 
