@@ -5,7 +5,7 @@ public class CommentVo {
     
     private String commentContent;
     private String commentDate;
-    private int articleNumber;
+    private int articleNumber; 
 	
     
     public int getCommentNumber() {
