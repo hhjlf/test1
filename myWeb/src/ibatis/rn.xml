@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ibatis.MyUser">
+ <select id="selectAluuUsers" resultType="ibatis.MyUser">
+ select * from myuser
+ </select>
+ <select id="seelctUserById" parameterType="String" resultType="ibatis.MyUser">
+ select ID as id,PASS as pass, NAME as name,AGE as age from MYUSER where ID = #{id}
+ </select>
+ <insert id="unsertUser" parameterType="ibatis.MyUser">
+ 	insert into MYUSER (ID,PASS,NAME,AGE)values(#{id},#{pass},#{name},#{age})
+ </insert>
+ <update id="updateUser" parameterType="ibatis.MyUser">
+ update myuser set PASS = #{pass},NAME=#{name},AGE=#{age} where ID =#{id}
+ </update>
+ <delete id="deleteUserById" parameterType="String">
+ 	delete from MYUSER where ID = #{id}
+ </delete>
+</mapper>

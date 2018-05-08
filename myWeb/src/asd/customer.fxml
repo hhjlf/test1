@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="asd.CustomerControl">
+   <children>
+      <BorderPane prefHeight="496.0" prefWidth="490.0">
+         <top>
+            <Pane prefHeight="59.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="157.0" layoutY="29.0" prefHeight="19.0" prefWidth="66.0" text="고객정보" />
+                  <Label layoutX="399.0" layoutY="23.0" text="전체목록" />
+                  <MenuBar layoutY="2.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                        <MenuItem fx:id="save" mnemonicParsing="false" text="저장" />
+                        <MenuItem fx:id="com" mnemonicParsing="false" text="불러오기" />
+                          <MenuItem fx:id="exit" mnemonicParsing="false" text="종료" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Delete" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </Pane>
+         </top>
+         <left>
+            <Pane prefHeight="237.0" prefWidth="111.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="45.0" layoutY="22.0" text="이 름 :" />
+                  <Label layoutX="21.0" layoutY="59.0" text="주민번호 :" />
+                  <Label layoutX="21.0" layoutY="95.0" text="전화번호 :" />
+                  <Label layoutX="45.0" layoutY="133.0" text="성 별 :" />
+                  <Label layoutX="45.0" layoutY="171.0" text="취 미 :" />
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="253.0" prefWidth="239.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="name" layoutX="2.0" layoutY="18.0" />
+                  <HBox layoutX="2.0" layoutY="56.0" prefHeight="35.0" prefWidth="225.0">
+                     <children>
+                        <TextField fx:id="wnals1" prefHeight="20.0" prefWidth="102.0" />
+                        <Label prefHeight="30.0" prefWidth="39.0" text="  -" />
+                        <TextField fx:id="wnals2" prefHeight="22.0" prefWidth="99.0" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="2.0" layoutY="91.0" prefHeight="32.0" prefWidth="286.0">
+                     <children>
+                        <TextField fx:id="tel1" prefHeight="29.0" prefWidth="65.0" />
+                        <Label prefHeight="30.0" prefWidth="25.0" text="  -" />
+                        <TextField fx:id="tel2" prefHeight="29.0" prefWidth="65.0" />
+                        <Label prefHeight="30.0" prefWidth="25.0" text="  -" />
+                        <TextField fx:id="tel3" prefHeight="29.0" prefWidth="65.0" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="-1.0" layoutY="130.0" prefHeight="40.0" prefWidth="232.0">
+                     <children>
+                        <RadioButton fx:id="men" mnemonicParsing="false" text="남자">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="girl" mnemonicParsing="false" text="여자" toggleGroup="$group" />
+                     </children>
+                  </HBox>
+                  <HBox layoutY="170.0" prefHeight="29.0" prefWidth="249.0">
+                     <children>
+                        <CheckBox fx:id="ck1" mnemonicParsing="false" text="게임" />
+                        <CheckBox fx:id="ck2" mnemonicParsing="false" text="영화" />
+                        <CheckBox fx:id="ck3" mnemonicParsing="false" text="운동" />
+                        <CheckBox fx:id="ck4" mnemonicParsing="false" text="독서" />
+                        <CheckBox fx:id="ck5" mnemonicParsing="false" text="음악" />
+                     </children>
+                  </HBox>
+                  <HBox layoutY="203.0" prefHeight="36.0" prefWidth="275.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="btn1" mnemonicParsing="false" text="등록">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn2" mnemonicParsing="false" text="분석">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn3" mnemonicParsing="false" text="수정">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn4" mnemonicParsing="false" text="삭제">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn5" mnemonicParsing="false" text="입력모드">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label layoutX="88.0" layoutY="230.0" text="고 객 정 보 분 석" />
+               </children>
+            </Pane>
+         </center>
+         <bottom>
+            <Pane prefHeight="177.0" prefWidth="490.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea fx:id="info" layoutX="30.0" prefHeight="158.0" prefWidth="430.0" />
+               </children>
+            </Pane>
+         </bottom>
+         <right>
+            <Pane prefHeight="260.0" prefWidth="120.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ListView fx:id="view" layoutX="5.0" layoutY="7.0" prefHeight="221.0" prefWidth="111.0" />
+               </children>
+            </Pane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
